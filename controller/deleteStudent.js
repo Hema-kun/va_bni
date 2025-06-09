@@ -1,12 +1,12 @@
 import { students } from "../model/students.js";
 
-function deleteStudent(name) {
-  const index = students.findIndex((student) => student.name === name);
+function deleteStudent(NPM) {
+  const index = students.findIndex((student) => student.NPM === NPM);
   if (index !== -1) {
     students.splice(index, 1);
     console.log("berhasil dihapus")
   } else {
-    console.warn(`Student with name "${name}" not found.`);
+    console.warn(`Student with NPM: "${NPM}" not found.`);
   }
 }
 

@@ -9,6 +9,7 @@ const prompt = PromptSync();
 let running = true;
 
 while (running) {
+  console.log("\n");
   console.log("===== Program VA BNI ======");
   console.log("Pilih salah satu");
   console.log("1. Add");
@@ -21,38 +22,49 @@ while (running) {
 
   switch (pilih) {
     case 1: {
+      const npm = Number(prompt("Masukkan NPM : "));
       const name = prompt("Masukkan nama: ");
       const spp = Number(prompt("Masukkan jumlah spp: "));
       const sks = Number(prompt("Masukkan jumlah sks: "));
-      addStudent(name, spp, sks);
-      console.log(students);
+      addStudent(npm, name, spp, sks);
       break;
     }
     case 2: {
-      const name = prompt("Masukkan nama: ");
-      deleteStudent(name);
-      console.log(students);
+      const npm = Number(prompt("Masukkan NPM : "));
+      const confirm = prompt(`Yakin ingin menghapus NPM ${npm}? (y/n): `);
+      if (confirm.toLowerCase() === "y") {
+        deleteStudent(npm);
+      } else {
+        console.log("Batal dihapus");
+      }
       break;
     }
     case 3: {
+      const npm = Number(prompt("Masukkan NPM : "));
       const name = prompt("Masukkan nama: ");
       const spp = Number(prompt("Masukkan jumlah spp: "));
       const sks = Number(prompt("Masukkan jumlah sks: "));
-      updateStudent(name, spp, sks);
-      console.log(students);
+      updateStudent(npm, name, spp, sks);
       break;
     }
     case 4: {
-      const name = prompt("Masukkan nama: ");
-      const result = readStudent(name);
-      console.log(result);
+      const npm = Number(prompt("Masukkan NPM : "));
+      readStudent(npm);
       break;
     }
     case 5:
-      console.log(students);
+      console.log("===== Semua Mahasiswa =====");
+      students.forEach((s, i) => {
+        console.log(
+          `${i + 1}. NPM: ${s.NPM}, Nama: ${s.Name}, SPP: ${s.SPP}, SKS: ${
+            s.SKS
+          }`
+        );
+      });
       break;
 
     case 0:
+      console.log("Program dihentikan. Terima kasih!");
       running = false;
       break;
 

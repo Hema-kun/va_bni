@@ -1,11 +1,11 @@
 import { students } from "../model/students.js";
 
-function readStudent(name) {
-  const index = students.findIndex((student) => student.name === name);
+function readStudent(NPM) {
+  const index = students.findIndex((student) => student.NPM === NPM);
   if (index !== -1) {
-    return students[index];
+    console.log(students[index]);
   } else {
-    console.warn(`Student with name "${name}" not found.`);
+    console.warn(`Student with NPM "${NPM}" not found.`);
   }
 }
 

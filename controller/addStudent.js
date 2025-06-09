@@ -1,17 +1,20 @@
 import { students } from "../model/students.js";
 
-function addStudent(name, spp, sks) {
-  if (typeof spp && typeof sks !== "number") {
-    console.log("gagal ditambah");
+function addStudent(NPM, Name, SPP, SKS) {
+  if (students.some((s) => s.NPM === NPM)) {
+    console.log("Gagal : 'Data sudah ada'");
+  } else if (typeof SPP !== "number" && typeof SKS !== "number") {
+    console.log("gagal ditambah : 'input harus number'");
   } else {
     const user = {
-      name: name,
-      SPP: spp,
-      SKS: sks,
+      NPM: NPM,
+      Name: Name,
+      SPP: SPP,
+      SKS: SKS,
     };
 
     students.push(user);
-    console.log("berhasil di tambah");
+    console.log("berhasil di tambah ");
   }
 }
 
